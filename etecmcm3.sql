@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05/05/2025 às 14:06
+-- Tempo de geração: 19/05/2025 às 14:03
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.2.4
 
@@ -29,6 +29,7 @@ USE `etecmcm3`;
 -- Estrutura para tabela `categorias`
 --
 
+DROP TABLE IF EXISTS `categorias`;
 CREATE TABLE `categorias` (
   `id_categoria` int(11) NOT NULL,
   `nome_cat` varchar(255) DEFAULT NULL
@@ -47,8 +48,7 @@ INSERT INTO `categorias` (`id_categoria`, `nome_cat`) VALUES
 (6, 'Hortifruti'),
 (7, 'Perfumaria'),
 (8, 'Bebidas'),
-(9, 'Eletroeletrônicos'),
-(10, 'Embalagens');
+(9, 'Eletroeletrônicos');
 
 -- --------------------------------------------------------
 
@@ -56,14 +56,40 @@ INSERT INTO `categorias` (`id_categoria`, `nome_cat`) VALUES
 -- Estrutura para tabela `produtos`
 --
 
+DROP TABLE IF EXISTS `produtos`;
 CREATE TABLE `produtos` (
   `id_produto` int(11) NOT NULL,
   `nome` varchar(255) DEFAULT NULL,
   `marca` varchar(255) DEFAULT NULL,
   `qtde` int(11) DEFAULT NULL,
   `preco` decimal(10,2) DEFAULT NULL,
-  `id_categoria` int(11) DEFAULT NULL
+  `id_categoria` int(11) DEFAULT NULL,
+  `unidade_medida` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `produtos`
+--
+
+INSERT INTO `produtos` (`id_produto`, `nome`, `marca`, `qtde`, `preco`, `id_categoria`, `unidade_medida`) VALUES
+(1, 'Sabão em pó', 'OMO', 4, 25.00, 1, 'un'),
+(2, 'Detergente', 'Ypê', 20, 3.25, 1, 'un'),
+(3, 'Mussarela', 'Presidente', 100, 55.60, 2, 'g'),
+(4, 'Queijo Suiço', 'Presidente', 10, 49.99, 3, 'g'),
+(5, 'Leite Semi-Desnatado', 'Jussara', 1, 15.99, 3, 'g'),
+(6, 'Iorgute', 'Vigor', 5, 9.99, 2, 'g'),
+(7, 'Feijão em Lata', 'Qualitá', 50, 99.99, 4, 'g'),
+(8, 'Ervilha em Lata', 'Quero', 50, 9.99, 4, 'g'),
+(9, 'Pernil', 'Seara', 30, 19.99, 5, 'kg'),
+(10, 'Peito de Frango', 'Swift', 18, 29.99, 5, 'kg'),
+(11, 'Maça', 'Hortifruti', 199, 19.99, 6, 'g'),
+(12, 'Quiabo', 'Hortifruti', 200, 13.99, 6, 'g'),
+(13, 'Carbon Fiber', 'Jequiti', 50, 1.99, 7, 'un'),
+(14, 'Natura', 'Kaiak', 50, 44.95, 7, 'un'),
+(15, 'Água', 'H20', 50, 44.95, 8, 'ml'),
+(16, 'Cerveja', 'Skol', 50, 44.95, 8, 'ml'),
+(17, 'Maquina de Lavar', 'Samsung', 50, 35.95, 9, 'un'),
+(18, 'Torradeira', 'Samsung', 50, 35.95, 9, 'un');
 
 --
 -- Índices para tabelas despejadas
@@ -96,7 +122,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Restrições para tabelas despejadas
