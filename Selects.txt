@@ -1,0 +1,266 @@
+Multiplos Selects :) :3
+
+MariaDB [etecmcm3]> select * from produtos;
++------------+----------------------+------------+------+-------+--------------+----------------+
+| id_produto | nome                 | marca      | qtde | preco | id_categoria | unidade_medida |
++------------+----------------------+------------+------+-------+--------------+----------------+
+|          1 | Sabão em pó          | OMO        |    4 | 25.00 |            1 | un             |
+|          2 | Detergente           | Ypê        |   20 |  3.25 |            1 | un             |
+|          3 | Mussarela            | Presidente |  100 | 55.60 |            2 | g              |
+|          4 | Queijo Suiço         | Presidente |   10 | 49.99 |            3 | g              |
+|          5 | Leite Semi-Desnatado | Jussara    |    1 | 15.99 |            3 | g              |
+|          6 | Iorgute              | Vigor      |    5 |  9.99 |            2 | g              |
+|          7 | Feijão em Lata       | Qualitá    |   50 | 99.99 |            4 | g              |
+|          8 | Ervilha em Lata      | Quero      |   50 |  9.99 |            4 | g              |
+|          9 | Pernil               | Seara      |   30 | 19.99 |            5 | kg             |
+|         10 | Peito de Frango      | Swift      |   18 | 29.99 |            5 | kg             |
+|         11 | Maça                 | Hortifruti |  199 | 19.99 |            6 | g              |
+|         12 | Quiabo               | Hortifruti |  200 | 13.99 |            6 | g              |
+|         13 | Carbon Fiber         | Jequiti    |   50 |  1.99 |            7 | un             |
+|         14 | Natura               | Kaiak      |   50 | 44.95 |            7 | un             |
+|         15 | Água                 | H20        |   50 | 44.95 |            8 | ml             |
+|         16 | Cerveja              | Skol       |   50 | 44.95 |            8 | ml             |
+|         17 | Maquina de Lavar     | Samsung    |   50 | 35.95 |            9 | un             |
+|         18 | Torradeira           | Samsung    |   50 | 35.95 |            9 | un             |
++------------+----------------------+------------+------+-------+--------------+----------------+
+18 rows in set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT nome, preco FROM produtos;
++----------------------+-------+
+| nome                 | preco |
++----------------------+-------+
+| Sabão em pó          | 25.00 |
+| Detergente           |  3.25 |
+| Mussarela            | 55.60 |
+| Queijo Suiço         | 49.99 |
+| Leite Semi-Desnatado | 15.99 |
+| Iorgute              |  9.99 |
+| Feijão em Lata       | 99.99 |
+| Ervilha em Lata      |  9.99 |
+| Pernil               | 19.99 |
+| Peito de Frango      | 29.99 |
+| Maça                 | 19.99 |
+| Quiabo               | 13.99 |
+| Carbon Fiber         |  1.99 |
+| Natura               | 44.95 |
+| Água                 | 44.95 |
+| Cerveja              | 44.95 |
+| Maquina de Lavar     | 35.95 |
+| Torradeira           | 35.95 |
++----------------------+-------+
+18 rows in set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT * FROM produtos WHERE marca = 'Sadia';
+Empty set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT * FROM produtos WHERE marca = 'Presidente';
++------------+--------------+------------+------+-------+--------------+----------------+
+| id_produto | nome         | marca      | qtde | preco | id_categoria | unidade_medida |
++------------+--------------+------------+------+-------+--------------+----------------+
+|          3 | Mussarela    | Presidente |  100 | 55.60 |            2 | g              |
+|          4 | Queijo Suiço | Presidente |   10 | 49.99 |            3 | g              |
++------------+--------------+------------+------+-------+--------------+----------------+
+2 rows in set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT * FROM produtos WHERE preco > 20;
++------------+------------------+------------+------+-------+--------------+----------------+
+| id_produto | nome             | marca      | qtde | preco | id_categoria | unidade_medida |
++------------+------------------+------------+------+-------+--------------+----------------+
+|          1 | Sabão em pó      | OMO        |    4 | 25.00 |            1 | un             |
+|          3 | Mussarela        | Presidente |  100 | 55.60 |            2 | g              |
+|          4 | Queijo Suiço     | Presidente |   10 | 49.99 |            3 | g              |
+|          7 | Feijão em Lata   | Qualitá    |   50 | 99.99 |            4 | g              |
+|         10 | Peito de Frango  | Swift      |   18 | 29.99 |            5 | kg             |
+|         14 | Natura           | Kaiak      |   50 | 44.95 |            7 | un             |
+|         15 | Água             | H20        |   50 | 44.95 |            8 | ml             |
+|         16 | Cerveja          | Skol       |   50 | 44.95 |            8 | ml             |
+|         17 | Maquina de Lavar | Samsung    |   50 | 35.95 |            9 | un             |
+|         18 | Torradeira       | Samsung    |   50 | 35.95 |            9 | un             |
++------------+------------------+------------+------+-------+--------------+----------------+
+10 rows in set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT * FROM produtos WHERE qtde <= 60;
++------------+----------------------+------------+------+-------+--------------+----------------+
+| id_produto | nome                 | marca      | qtde | preco | id_categoria | unidade_medida |
++------------+----------------------+------------+------+-------+--------------+----------------+
+|          1 | Sabão em pó          | OMO        |    4 | 25.00 |            1 | un             |
+|          2 | Detergente           | Ypê        |   20 |  3.25 |            1 | un             |
+|          4 | Queijo Suiço         | Presidente |   10 | 49.99 |            3 | g              |
+|          5 | Leite Semi-Desnatado | Jussara    |    1 | 15.99 |            3 | g              |
+|          6 | Iorgute              | Vigor      |    5 |  9.99 |            2 | g              |
+|          7 | Feijão em Lata       | Qualitá    |   50 | 99.99 |            4 | g              |
+|          8 | Ervilha em Lata      | Quero      |   50 |  9.99 |            4 | g              |
+|          9 | Pernil               | Seara      |   30 | 19.99 |            5 | kg             |
+|         10 | Peito de Frango      | Swift      |   18 | 29.99 |            5 | kg             |
+|         13 | Carbon Fiber         | Jequiti    |   50 |  1.99 |            7 | un             |
+|         14 | Natura               | Kaiak      |   50 | 44.95 |            7 | un             |
+|         15 | Água                 | H20        |   50 | 44.95 |            8 | ml             |
+|         16 | Cerveja              | Skol       |   50 | 44.95 |            8 | ml             |
+|         17 | Maquina de Lavar     | Samsung    |   50 | 35.95 |            9 | un             |
+|         18 | Torradeira           | Samsung    |   50 | 35.95 |            9 | un             |
++------------+----------------------+------------+------+-------+--------------+----------------+
+15 rows in set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT nome, preco FROM produtos ORDER BY preco ASC LIMIT 5;
++-----------------+-------+
+| nome            | preco |
++-----------------+-------+
+| Carbon Fiber    |  1.99 |
+| Detergente      |  3.25 |
+| Iorgute         |  9.99 |
+| Ervilha em Lata |  9.99 |
+| Quiabo          | 13.99 |
++-----------------+-------+
+5 rows in set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT nome, preco FROM produtos ORDER BY preco DESC LIMIT 5;
++----------------+-------+
+| nome           | preco |
++----------------+-------+
+| Feijão em Lata | 99.99 |
+| Mussarela      | 55.60 |
+| Queijo Suiço   | 49.99 |
+| Natura         | 44.95 |
+| Água           | 44.95 |
++----------------+-------+
+5 rows in set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT COUNT(*) AS total_produtos FROM produtos;
++----------------+
+| total_produtos |
++----------------+
+|             18 |
++----------------+
+1 row in set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT AVG(preco) AS preco_medio FROM produtos;
++-------------+
+| preco_medio |
++-------------+
+|   31.250000 |
++-------------+
+1 row in set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT nome, quant FROM produtos ORDER BY quant DESC LIMIT 1;
+ERROR 1054 (42S22): Unknown column 'quant' in 'field list'
+MariaDB [etecmcm3]> SELECT nome, qtde FROM produtos ORDER BY qtde DESC LIMIT 1;1;
++--------+------+
+| nome   | qtde |
++--------+------+
+| Quiabo |  200 |
++--------+------+
+1 row in set (0.000 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '1' at line 1
+MariaDB [etecmcm3]> SELECT nome, quant FROM produtos ORDER BY quant DESC LIMIT 1;
+ERROR 1054 (42S22): Unknown column 'quant' in 'field list'
+MariaDB [etecmcm3]> SELECT nome, qtde FROM produtos ORDER BY qtde DESC LIMIT 1;
++--------+------+
+| nome   | qtde |
++--------+------+
+| Quiabo |  200 |
++--------+------+
+1 row in set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT p.nome, c.nome_cat FROM produtos p JOIN categorias c ON p.id_categoria = c.id_categoria;
++----------------------+-------------------+
+| nome                 | nome_cat          |
++----------------------+-------------------+
+| Sabão em pó          | Limpeza           |
+| Detergente           | Limpeza           |
+| Mussarela            | Frios             |
+| Iorgute              | Frios             |
+| Queijo Suiço         | Laticínios        |
+| Leite Semi-Desnatado | Laticínios        |
+| Feijão em Lata       | Enlatados         |
+| Ervilha em Lata      | Enlatados         |
+| Pernil               | Carnes            |
+| Peito de Frango      | Carnes            |
+| Maça                 | Hortifruti        |
+| Quiabo               | Hortifruti        |
+| Carbon Fiber         | Perfumaria        |
+| Natura               | Perfumaria        |
+| Água                 | Bebidas           |
+| Cerveja              | Bebidas           |
+| Maquina de Lavar     | Eletroeletrônicos |
+| Torradeira           | Eletroeletrônicos |
++----------------------+-------------------+
+18 rows in set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT p.nome, p.marca, p.preco FROM produtos p JOIN categorias c ON p.id_categoria = c.id_categoria WHERE c.nome_cat = 'Laticínios';
++----------------------+------------+-------+
+| nome                 | marca      | preco |
++----------------------+------------+-------+
+| Queijo Suiço         | Presidente | 49.99 |
+| Leite Semi-Desnatado | Jussara    | 15.99 |
++----------------------+------------+-------+
+2 rows in set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT c.nome_cat, COUNT(*) AS total_produtos FROM produtos p JOIN categorias c ON p.id_categoria = c.id_categoria GROUP BY c.nome_cat;
++-------------------+----------------+
+| nome_cat          | total_produtos |
++-------------------+----------------+
+| Bebidas           |              2 |
+| Carnes            |              2 |
+| Eletroeletrônicos |              2 |
+| Enlatados         |              2 |
+| Frios             |              2 |
+| Hortifruti        |              2 |
+| Laticínios        |              2 |
+| Limpeza           |              2 |
+| Perfumaria        |              2 |
++-------------------+----------------+
+9 rows in set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT * FROM produtos
+    -> WHERE preco BETWEEN 10 AND 20;
++------------+----------------------+------------+------+-------+--------------+----------------+
+| id_produto | nome                 | marca      | qtde | preco | id_categoria | unidade_medida |
++------------+----------------------+------------+------+-------+--------------+----------------+
+|          5 | Leite Semi-Desnatado | Jussara    |    1 | 15.99 |            3 | g              |
+|          9 | Pernil               | Seara      |   30 | 19.99 |            5 | kg             |
+|         11 | Maça                 | Hortifruti |  199 | 19.99 |            6 | g              |
+|         12 | Quiabo               | Hortifruti |  200 | 13.99 |            6 | g              |
++------------+----------------------+------------+------+-------+--------------+----------------+
+4 rows in set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT * FROM produtos
+    -> WHERE nome LIKE 'P%';
++------------+-----------------+-------+------+-------+--------------+----------------+
+| id_produto | nome            | marca | qtde | preco | id_categoria | unidade_medida |
++------------+-----------------+-------+------+-------+--------------+----------------+
+|          9 | Pernil          | Seara |   30 | 19.99 |            5 | kg             |
+|         10 | Peito de Frango | Swift |   18 | 29.99 |            5 | kg             |
++------------+-----------------+-------+------+-------+--------------+----------------+
+2 rows in set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT * FROM produtos WHERE nome LIKE 'P%';
++------------+-----------------+-------+------+-------+--------------+----------------+
+| id_produto | nome            | marca | qtde | preco | id_categoria | unidade_medida |
++------------+-----------------+-------+------+-------+--------------+----------------+
+|          9 | Pernil          | Seara |   30 | 19.99 |            5 | kg             |
+|         10 | Peito de Frango | Swift |   18 | 29.99 |            5 | kg             |
++------------+-----------------+-------+------+-------+--------------+----------------+
+2 rows in set (0.000 sec)
+
+MariaDB [etecmcm3]> SELECT DISTINCT marca FROM produtos;
++------------+
+| marca      |
++------------+
+| OMO        |
+| Ypê        |
+| Presidente |
+| Jussara    |
+| Vigor      |
+| Qualitá    |
+| Quero      |
+| Seara      |
+| Swift      |
+| Hortifruti |
+| Jequiti    |
+| Kaiak      |
+| H20        |
+| Skol       |
+| Samsung    |
++------------+
+15 rows in set (0.000 sec)
